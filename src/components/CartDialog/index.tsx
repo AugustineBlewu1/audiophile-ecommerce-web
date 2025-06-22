@@ -10,6 +10,7 @@ import {
 import { useCartDialog, useCartStore } from "@/lib/store";
 import { Button } from "../ui/button";
 import CounterButton from "../CounterButton";
+import { useRouter } from "next/navigation";
 
 export function CartDialog() {
   const { showDialog, dialogOpen: open, closeDialog } = useCartDialog();
@@ -24,6 +25,8 @@ export function CartDialog() {
     singleProductTotal,
     totalPrice
   } = useCartStore();
+
+  const router = useRouter()
 
   const handleOpenChange = (isOpen: boolean) => {
     if (isOpen) {
@@ -75,7 +78,10 @@ export function CartDialog() {
           </div>
         <DialogFooter className="w-full">
           
-          <Button className="w-full" size={"lg"}>
+          <Button className="w-full" size={"lg"} onClick={()=> {
+            router?.push('/checkout');
+            closeDialog()
+          }}>
             CHECK OUT
           </Button>
         </DialogFooter>
