@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import data from "@/lib/data.json";
 import Navbar from "@/components/Navbar";
 import { useParams, useRouter } from "next/navigation";
@@ -13,35 +13,71 @@ import OthersSection from "@/components/OthersSection";
 import SpeakersSection from "@/components/SpeakersSection";
 import BearSection from "@/components/BearSection";
 import Footer from "@/components/Footer";
+import { useCartStore } from "@/lib/store";
 
 export default function SingleSpeakerPage() {
   const router = useRouter();
   const { slug } = useParams();
   console.log("params", slug);
   const breakPoint = useBreakpoint();
-  const getSpeakerData = data?.filter(
-    (products) => products.slug === slug
-  )[0];
+  const [productQuantity, setProductQuantity] = useState(1);
+  const {
+    addProduct,
+    clearCart,
+    clearProductItem,
+    products,
+    totalProducts,
+    updateProduct,
+    singleProductTotal,
+    removeAProduct,
+  } = useCartStore();
+
+  const getSpeakerData = data?.filter((products) => products.slug === slug)[0];
   const headPhoneSrc = breakPoint
     ? getSpeakerData?.categoryImage[breakPoint]
     : getSpeakerData?.categoryImage.desktop;
 
   console.log("headPhoneSrc", headPhoneSrc);
   const productContent: CardContentDetailsProps = {
-    buttonAction: () => {},
+    buttonAction: () => {
+      if (singleProductTotal(getSpeakerData?.slug) > 1) {
+        updateProduct(getSpeakerData?.slug, productQuantity);
+      } else {
+        addProduct({
+          image: getSpeakerData?.image.mobile?.slice(1),
+          name: getSpeakerData?.name,
+          price: getSpeakerData?.price,
+          quantity: productQuantity,
+          slug: getSpeakerData?.slug,
+        });
+      }
+    },
     buttonText: "ADD TO CART",
     title: getSpeakerData?.name,
     description: getSpeakerData?.description,
     layout: "left",
     textColor: "text-secondary",
     counter: {
-      value: 1,
-      increment: () => {},
-      decrement: () => {},
+      value: productQuantity,
+      increment: () => {
+        setProductQuantity(productQuantity + 1);
+      },
+      decrement: () => {
+        if (productQuantity > 1) {
+          setProductQuantity(productQuantity - 1);
+        }
+      },
     },
     price: getSpeakerData?.price,
   };
 
+  useEffect(() => {
+    if (singleProductTotal(getSpeakerData?.slug) > 1) {
+      setProductQuantity(singleProductTotal(getSpeakerData?.slug));
+    } else {
+      setProductQuantity(1);
+    }
+  }, [singleProductTotal(getSpeakerData?.slug)]);
   const [paragraph, paragraph2] = splitAfterWord(
     getSpeakerData?.features,
     "beat."
@@ -105,13 +141,10 @@ export default function SingleSpeakerPage() {
           })}
         />
         <div className="py-52">
-
-        <SpeakersSection />
+          <SpeakersSection />
         </div>
 
         <BearSection />
-
-        
       </div>
       <Footer />
     </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import data from "@/lib/data.json";
 import Navbar from "@/components/Navbar";
 import { useParams, useRouter } from "next/navigation";
@@ -13,39 +13,80 @@ import OthersSection from "@/components/OthersSection";
 import SpeakersSection from "@/components/SpeakersSection";
 import BearSection from "@/components/BearSection";
 import Footer from "@/components/Footer";
+import { useCartStore } from "@/lib/store";
 
 export default function SingleEarphonePage() {
   const router = useRouter();
   const { slug } = useParams();
   console.log("params", slug);
   const breakPoint = useBreakpoint();
-  const getEarphoneData = data?.filter(
-    (products) => products.slug === slug
-  )[0];
-  const headPhoneSrc = breakPoint
+  const [productQuantity, setProductQuantity] = useState(1);
+  const {
+    addProduct,
+    clearCart,
+    clearProductItem,
+    products,
+    totalProducts,
+    updateProduct,
+    singleProductTotal,
+    removeAProduct,
+  } = useCartStore();
+
+  const getEarphoneData = data?.filter((products) => products.slug === slug)[0];
+  const earPhoneSrc = breakPoint
     ? getEarphoneData?.categoryImage[breakPoint]
     : getEarphoneData?.categoryImage.desktop;
 
-  console.log("headPhoneSrc", headPhoneSrc);
+  console.log("earPhoneSrc", earPhoneSrc);
   const productContent: CardContentDetailsProps = {
-    buttonAction: () => {},
+    buttonAction: () => {
+      if(singleProductTotal(getEarphoneData?.slug) > 1){
+        updateProduct(getEarphoneData?.slug, productQuantity)
+      } else {
+        addProduct({
+        image: getEarphoneData?.image.mobile?.slice(1),
+        name: getEarphoneData?.name,
+        price: getEarphoneData?.price,
+        quantity: productQuantity,
+        slug: getEarphoneData?.slug,
+      });
+      }
+     
+    },
     buttonText: "ADD TO CART",
     title: getEarphoneData?.name,
     description: getEarphoneData?.description,
     layout: "left",
     textColor: "text-secondary",
     counter: {
-      value: 1,
-      increment: () => {},
-      decrement: () => {},
+      value: productQuantity,
+      increment: () => {
+        setProductQuantity(productQuantity + 1);
+      },
+      decrement: () => {
+        if (productQuantity > 1) {
+          setProductQuantity(productQuantity - 1);
+        }
+        // removeAProduct(getEarphoneData?.slug)
+      },
     },
     price: getEarphoneData?.price,
   };
+
+  useEffect(() => {
+    if(singleProductTotal(getEarphoneData?.slug) > 1){
+      setProductQuantity(singleProductTotal(getEarphoneData?.slug))
+    } else {
+      setProductQuantity(1)
+
+    }
+  },[singleProductTotal(getEarphoneData?.slug)])
 
   const [paragraph, paragraph2] = splitAfterWord(
     getEarphoneData?.features,
     "beat."
   );
+
   return (
     <div>
       <Navbar />
@@ -60,9 +101,9 @@ export default function SingleEarphonePage() {
         <div className="py-14">
           <ProductDetailsCard
             image={
-              headPhoneSrc?.startsWith("./")
-                ? headPhoneSrc?.slice(1)
-                : headPhoneSrc
+              earPhoneSrc?.startsWith("./")
+                ? earPhoneSrc?.slice(1)
+                : earPhoneSrc
             }
             productContent={productContent}
           />
@@ -105,13 +146,10 @@ export default function SingleEarphonePage() {
           })}
         />
         <div className="py-52">
-
-        <SpeakersSection />
+          <SpeakersSection />
         </div>
 
         <BearSection />
-
-        
       </div>
       <Footer />
     </div>

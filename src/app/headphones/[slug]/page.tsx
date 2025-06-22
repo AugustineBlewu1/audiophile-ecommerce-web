@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import data from "@/lib/data.json";
 import Navbar from "@/components/Navbar";
 import { useParams, useRouter } from "next/navigation";
@@ -14,12 +14,24 @@ import OthersSection from "@/components/OthersSection";
 import SpeakersSection from "@/components/SpeakersSection";
 import BearSection from "@/components/BearSection";
 import Footer from "@/components/Footer";
+import { useCartStore } from "@/lib/store";
 
 export default function SingleHeadPhonePage() {
   const router = useRouter();
   const { slug } = useParams();
   console.log("params", slug);
   const breakPoint = useBreakpoint();
+    const [productQuantity, setProductQuantity] = useState(1);
+      const {
+        addProduct,
+        clearCart,
+        clearProductItem,
+        products,
+        totalProducts,
+        updateProduct,
+        singleProductTotal,
+        removeAProduct,
+      } = useCartStore();
   const getHeadPhoneData = data?.filter(
     (products) => products.slug === slug
   )[0];
@@ -29,24 +41,54 @@ export default function SingleHeadPhonePage() {
 
   console.log("headPhoneSrc", headPhoneSrc);
   const productContent: CardContentDetailsProps = {
-    buttonAction: () => {},
+    buttonAction: () => {
+       if(singleProductTotal(getHeadPhoneData?.slug) > 1){
+        updateProduct(getHeadPhoneData?.slug, productQuantity)
+      } else {
+        addProduct({
+        image: getHeadPhoneData?.image.mobile?.slice(1),
+        name: getHeadPhoneData?.name,
+        price: getHeadPhoneData?.price,
+        quantity: productQuantity,
+        slug: getHeadPhoneData?.slug,
+      });
+      }
+    },
     buttonText: "ADD TO CART",
     title: getHeadPhoneData?.name,
     description: getHeadPhoneData?.description,
     layout: "left",
     textColor: "text-secondary",
     counter: {
-      value: 1,
-      increment: () => {},
-      decrement: () => {},
+      value: productQuantity,
+      increment: () => {
+        setProductQuantity(productQuantity + 1);
+
+      },
+      decrement: () => {
+        if (productQuantity > 1) {
+          setProductQuantity(productQuantity - 1);
+        }
+      },
     },
     price: getHeadPhoneData?.price,
   };
+
+  useEffect(() => {
+      if(singleProductTotal(getHeadPhoneData?.slug) > 1){
+        setProductQuantity(singleProductTotal(getHeadPhoneData?.slug))
+      } else {
+        setProductQuantity(1)
+  
+      }
+    },[singleProductTotal(getHeadPhoneData?.slug)])
 
   const [paragraph, paragraph2] = splitAfterWord(
     getHeadPhoneData?.features,
     "beat."
   );
+
+  
   return (
     <div>
       <Navbar />
