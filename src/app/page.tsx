@@ -1,14 +1,21 @@
+import BearSection from "@/components/BearSection";
+import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
-
+import Speakers from "@/components/Speakers";
 
 export default function Home() {
   return (
-    <main className="bg-[#191919] px-24  ">
+    <main className="  ">
       {/* navbar section */}
       <Navbar></Navbar>
       {/* hero  section */}
       <Hero></Hero>
+      {/* speakers  section */}
+      <Speakers></Speakers>
+      <BearSection />
+
+      <Footer />
     </main>
   );
 }

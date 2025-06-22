@@ -6,8 +6,8 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 left-0 right-0 py-8 w-full z-10  border-b border-[#979797] ">
-      <div className="max-w-[1400px] mx-auto flex justify-between items-center ">
+    <nav className="fixed top-0 left-0 right-0 py-8 w-full z-10  border-b border-[#979797] bg-[#191919] ">
+      <div className="max-w-[1350px] mx-auto flex justify-between items-center ">
         <div className="inline-flex items-center gap-5.5">
           <div className="md:hidden">
             <button className="text-gray-300 hover:text-white focus:outline-none">
@@ -17,7 +17,7 @@ const Navbar = () => {
               />
             </button>
           </div>
-          <div className="text-white text-xl font-extrabold ">audiophile</div>
+          <div className="text-white text-2xl font-extrabold ">audiophile</div>
         </div>
         <div className="hidden md:flex space-x-8">
           {navItems?.map((navItem, index) => (

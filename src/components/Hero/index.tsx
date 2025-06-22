@@ -3,13 +3,15 @@ import { Button } from '../ui/button'
 
 const Hero = () => {
   return (
-    <div className="relative h-screen">
+    <div className="relative h-screen bg-[#191919] w-full overflow-hidden ">
+
         <img
           src="/assets/home/desktop/image-hero.jpg"
           alt="Desktop HeadPhone"
-          className="object-cover w-full"
+          className="absolute inset-0 object-cover w-full h-fit"
         />
-        <div className="absolute inset-0 flex justify-center flex-col mx-auto container space-y-8">
+  
+        <div className="absolute inset-0 flex justify-center flex-col mx-auto container space-y-8 pl-24 ">
           <h3 className="text-lg text-white/35 tracking-widest">NEW PRODUCT</h3>
           <h1 className="text-6xl text-white font-extrabold ">
             XX99 MARK II <br /> HEADPHONES
