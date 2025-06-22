@@ -7,21 +7,21 @@ import ProductCard, { ProductCardProps } from "@/components/ProductCard.tsx";
 import SpeakersSection from "@/components/SpeakersSection";
 import { useBreakpoint } from "@/hooks/use-breakpoints";
 import data from "@/lib/data.json";
-import {  getHeadphonesLayout } from "@/lib/variables";
+import {  getSpeakersLayout } from "@/lib/variables";
 
-export default function HeadPhones() {
+export default function Speakers() {
   console.log("data", data);
 
   const breakPoint = useBreakpoint();
 
-  const getHeadPhones = data?.filter(
-    (products) => products.category === "headphones"
+  const getSpeakers = data?.filter(
+    (products) => products.category === "speakers"
   );
-  console.log("getHeadPhones", getHeadPhones);
+  console.log("getSpeakers", getSpeakers);
 
  
 
-  const headPhonesProducts: ProductCardProps[] = getHeadPhones?.map(
+  const speakersProduct: ProductCardProps[] = getSpeakers?.map(
     (headphone) => {
       const headPhoneSrc = breakPoint
         ? headphone?.categoryImage[breakPoint]
@@ -36,7 +36,7 @@ export default function HeadPhones() {
           type: headphone?.new ? "NEW PRODUCT" : "",
           description: headphone?.description,
           textColor: "text-secondary",
-          layout: getHeadphonesLayout(headphone?.slug),
+          layout: getSpeakersLayout(headphone?.slug),
         },
       };
     }
@@ -44,9 +44,9 @@ export default function HeadPhones() {
 
   return (
     <>
-      <Header title="Headphones" />;
+      <Header title="Speakers" />;
       <div className="mt-40 container mx-auto px-24 space-y-28">
-        {headPhonesProducts
+        {speakersProduct
           ?.slice()
           .reverse()
           .map((product, index) => (

@@ -25,7 +25,7 @@ export const socialIcons = [
   "./assets/shared/desktop/icon-twitter.svg",
 ];
 
-export function getLayout(slug: string) : 'left' | 'right' {
+export function getHeadphonesLayout(slug: string) : 'left' | 'right' {
   switch (slug) {
     case "xx99-mark-two-headphones":
       return "left";
@@ -33,6 +33,17 @@ export function getLayout(slug: string) : 'left' | 'right' {
       return "right";
     case "xx59-headphones":
       return "left";
+    default:
+      return "left";
+  }
+}
+
+export function getSpeakersLayout(slug: string) : 'left' | 'right' {
+  switch (slug) {
+    case "zx9-speaker":
+      return "left";
+    case "zx7-speaker":
+      return "right";
     default:
       return "left";
   }
