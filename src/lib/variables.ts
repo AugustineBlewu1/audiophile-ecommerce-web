@@ -11,7 +11,7 @@ export const navItems = [
   },
   {
     name: "Speakers",
-    link: "/speakers",
+    link: "/speaker",
   },
   {
     name: "Earphones",
@@ -80,3 +80,24 @@ export function getSpeakersLayout(slug: string) : 'left' | 'right' {
       },
     },
   ];
+
+  /**
+   * split a text into two after a text
+   * @param text 
+   * @param word 
+   * @returns an array
+   */
+  export function splitAfterWord(text: string, word: string) {
+  const index = text.indexOf(word);
+
+  if (index === -1) {
+    return [text, ""];
+  }
+
+  const splitIndex = index + word.length;
+
+  const firstPart = text.slice(0, splitIndex).trim();
+  const secondPart = text.slice(splitIndex).trim();
+
+  return [firstPart, secondPart];
+}

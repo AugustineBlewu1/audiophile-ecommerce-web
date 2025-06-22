@@ -7,34 +7,36 @@ import ProductCard, { ProductCardProps } from "@/components/ProductCard.tsx";
 import SpeakersSection from "@/components/SpeakersSection";
 import { useBreakpoint } from "@/hooks/use-breakpoints";
 import data from "@/lib/data.json";
-import {  getSpeakersLayout } from "@/lib/variables";
+import { useRouter } from "next/navigation";
 
 export default function Earphones() {
   console.log("data", data);
 
   const breakPoint = useBreakpoint();
+  const router = useRouter();
 
   const getEarPhones = data?.filter(
     (products) => products.category === "earphones"
   );
   console.log("getEarPhones", getEarPhones);
 
- 
-
   const earPhonesProducts: ProductCardProps[] = getEarPhones?.map(
-    (headphone) => {
+    (earPhone) => {
       const earPhonesSrc = breakPoint
-        ? headphone?.categoryImage[breakPoint]
-        : headphone?.categoryImage.desktop;
+        ? earPhone?.categoryImage[breakPoint]
+        : earPhone?.categoryImage.desktop;
 
       return {
         image: earPhonesSrc,
         productContent: {
-          buttonAction: () => {},
+          buttonAction: () => {
+           router.push(`/earphones/${earPhone?.slug}`)
+
+          },
           buttonText: "SEE PRODUCT",
-          title: headphone?.name,
-          type: headphone?.new ? "NEW PRODUCT" : "",
-          description: headphone?.description,
+          title: earPhone?.name,
+          type: earPhone?.new ? "NEW PRODUCT" : "",
+          description: earPhone?.description,
           textColor: "text-secondary",
           layout: "left",
         },
@@ -44,7 +46,7 @@ export default function Earphones() {
 
   return (
     <>
-      <Header title="Speakers" />;
+      <Header title="Earphones" />;
       <div className="mt-40 container mx-auto px-24 space-y-28">
         {earPhonesProducts
           ?.slice()
@@ -52,15 +54,12 @@ export default function Earphones() {
           .map((product, index) => (
             <ProductCard {...product} key={index} />
           ))}
-          <div className="py-28">
-
+        <div className="py-28">
           <SpeakersSection />
-          </div>
-          <BearSection />
+        </div>
+        <BearSection />
       </div>
-          <Footer/>
-
-
+      <Footer />
     </>
   );
 }

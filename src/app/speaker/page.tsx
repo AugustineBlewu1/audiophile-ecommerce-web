@@ -8,11 +8,13 @@ import SpeakersSection from "@/components/SpeakersSection";
 import { useBreakpoint } from "@/hooks/use-breakpoints";
 import data from "@/lib/data.json";
 import {  getSpeakersLayout } from "@/lib/variables";
+import { useRouter } from "next/navigation";
 
-export default function Speakers() {
+export default function Speaker() {
   console.log("data", data);
 
   const breakPoint = useBreakpoint();
+  const router = useRouter();
 
   const getSpeakers = data?.filter(
     (products) => products.category === "speakers"
@@ -22,21 +24,24 @@ export default function Speakers() {
  
 
   const speakersProduct: ProductCardProps[] = getSpeakers?.map(
-    (headphone) => {
+    (speaker) => {
       const speakersSrc = breakPoint
-        ? headphone?.categoryImage[breakPoint]
-        : headphone?.categoryImage.desktop;
+        ? speaker?.categoryImage[breakPoint]
+        : speaker?.categoryImage.desktop;
 
       return {
         image: speakersSrc,
         productContent: {
-          buttonAction: () => {},
+          buttonAction: () => {
+     router.push(`/speaker/${speaker?.slug}`)
+
+          },
           buttonText: "SEE PRODUCT",
-          title: headphone?.name,
-          type: headphone?.new ? "NEW PRODUCT" : "",
-          description: headphone?.description,
+          title: speaker?.name,
+          type: speaker?.new ? "NEW PRODUCT" : "",
+          description: speaker?.description,
           textColor: "text-secondary",
-          layout: getSpeakersLayout(headphone?.slug),
+          layout: getSpeakersLayout(speaker?.slug),
         },
       };
     }

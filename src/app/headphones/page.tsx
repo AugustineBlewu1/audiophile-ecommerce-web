@@ -8,11 +8,14 @@ import SpeakersSection from "@/components/SpeakersSection";
 import { useBreakpoint } from "@/hooks/use-breakpoints";
 import data from "@/lib/data.json";
 import {  getHeadphonesLayout } from "@/lib/variables";
+import { useRouter } from "next/navigation";
 
 export default function HeadPhones() {
   console.log("data", data);
 
   const breakPoint = useBreakpoint();
+
+  const router = useRouter();
 
   const getHeadPhones = data?.filter(
     (products) => products.category === "headphones"
@@ -30,7 +33,9 @@ export default function HeadPhones() {
       return {
         image: headPhoneSrc,
         productContent: {
-          buttonAction: () => {},
+          buttonAction: () => {
+            router.push(`/headphones/${headphone?.slug}`)
+          },
           buttonText: "SEE PRODUCT",
           title: headphone?.name,
           type: headphone?.new ? "NEW PRODUCT" : "",
