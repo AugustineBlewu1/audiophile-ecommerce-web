@@ -33,8 +33,8 @@ export default function HeadPhones() {
           type: headphone?.new ? "NEW PRODUCT" : "",
           description: headphone?.description,
           textColor: "text-secondary",
+          layout: getLayout(headphone?.slug),
         },
-        layout: getLayout(headphone?.slug),
       };
     }
   );

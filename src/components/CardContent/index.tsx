@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy } from "react";
 import { Button } from "../ui/button";
 import clsx from "clsx";
 import { cn } from "@/lib/utils";
@@ -26,7 +26,8 @@ export type CardContentProps = {
   titleTextSize?: "sm" | "lg";
   textColor?: string;
   buttonAction: () => void;
-  variant?: "link" | "default" | "destructive" | "outline" | "secondary" | "ghost" 
+  variant?: "link" | "default" | "destructive" | "outline" | "secondary" | "ghost" ;
+  layout?: "left" | "right"
 };
 /**
  * Displays Product Cards info
@@ -35,7 +36,7 @@ export type CardContentProps = {
  */
 const CardContent: React.FC<CardContentProps> = (data) => {
   return (
-    <div className=" flex flex-col  space-y-8 w-fit ">
+    <div className={clsx(" flex flex-col  space-y-8 w-fit ", data?.layout === 'left' ? 'ml-24' :'')}>
       {data.type && (
         <h3 className="text-lg text-primary tracking-widest ">{data.type}</h3>
       )}
