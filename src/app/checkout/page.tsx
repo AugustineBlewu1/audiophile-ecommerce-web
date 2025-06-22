@@ -62,9 +62,9 @@ export default function Checkout() {
     },
   });
 
-  const vatAmount = totalPrice() * 0.20;
+  const vatAmount = (totalPrice() * 0.20)?.toFixed(2);
   const shippingFee = 50;
-  const grandTotal = totalPrice() - (vatAmount + shippingFee) 
+  const grandTotal = totalPrice() - (Number(vatAmount) + Number(shippingFee)) 
   const { showDialog, dialogOpen: open, closeDialog } = useSuccessDialog();
 
 
@@ -246,7 +246,7 @@ export default function Checkout() {
             <div className="flex flex-row justify-between">
               <h4 className="text-secondary/50  font-medium">VAT (INCLUDED)</h4>
               <h5 className="font-extrabold text-xl">
-                $ {vatAmount}
+                $ {vatAmount?.toLocaleString()}
               </h5>
             </div>
             <div className="flex flex-row justify-between">
