@@ -3,9 +3,7 @@ import React from "react";
 const BearSection = () => {
   return (
     <div className="container mx-auto px-24">
-
-   
-    <div className="mt-40 w-full flex flex-row items-center gap-10">
+    <div className=" w-full flex flex-row items-center gap-10">
       <div className="space-y-8 w-1/2">
         <h1 className="text-4xl font-extrabold uppercase">
           Bringing you the <br /> <span className="text-primary">best </span>{" "}

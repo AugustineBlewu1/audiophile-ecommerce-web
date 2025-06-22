@@ -1,3 +1,5 @@
+import { SpeakersList } from "./interface";
+
 export const navItems = [
   {
     name: "Home",
@@ -35,3 +37,35 @@ export function getLayout(slug: string) : 'left' | 'right' {
       return "left";
   }
 }
+
+ export const speakersList: SpeakersList[] = [
+    {
+      name: "Headphones",
+      image: {
+        mobile:
+          "./assets/shared/mobile/image-category-thumbnail-headphones.png",
+        tablet:
+          "./assets/shared/tablet/image-category-thumbnail-headphones.png",
+        desktop:
+          "./assets/shared/desktop/image-category-thumbnail-headphones.png",
+      },
+    },
+    {
+      name: "Speakers",
+      image: {
+        mobile: "./assets/shared/mobile/image-category-thumbnail-speakers.png",
+        tablet: "./assets/shared/tablet/image-category-thumbnail-speakers.png",
+        desktop:
+          "./assets/shared/desktop/image-category-thumbnail-speakers.png",
+      },
+    },
+    {
+      name: "Earphones",
+      image: {
+        mobile: "./assets/shared/mobile/image-category-thumbnail-earphones.png",
+        tablet: "./assets/shared/tablet/image-category-thumbnail-earphones.png",
+        desktop:
+          "./assets/shared/desktop/image-category-thumbnail-earphones.png",
+      },
+    },
+  ];

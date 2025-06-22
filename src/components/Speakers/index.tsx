@@ -6,39 +6,10 @@ import React from "react";
 import CardContent from "../CardContent";
 import { navItems } from "@/lib/variables";
 import Link from "next/link";
+import SpeakersSection from "../SpeakersSection";
 
 const Speakers = () => {
-  const speakersList: SpeakersList[] = [
-    {
-      name: "Headphones",
-      image: {
-        mobile:
-          "./assets/shared/mobile/image-category-thumbnail-headphones.png",
-        tablet:
-          "./assets/shared/tablet/image-category-thumbnail-headphones.png",
-        desktop:
-          "./assets/shared/desktop/image-category-thumbnail-headphones.png",
-      },
-    },
-    {
-      name: "Speakers",
-      image: {
-        mobile: "./assets/shared/mobile/image-category-thumbnail-speakers.png",
-        tablet: "./assets/shared/tablet/image-category-thumbnail-speakers.png",
-        desktop:
-          "./assets/shared/desktop/image-category-thumbnail-speakers.png",
-      },
-    },
-    {
-      name: "Earphones",
-      image: {
-        mobile: "./assets/shared/mobile/image-category-thumbnail-earphones.png",
-        tablet: "./assets/shared/tablet/image-category-thumbnail-earphones.png",
-        desktop:
-          "./assets/shared/desktop/image-category-thumbnail-earphones.png",
-      },
-    },
-  ];
+ 
 
   const breakpoint = useBreakpoint();
 
@@ -71,41 +42,7 @@ const Speakers = () => {
   return (
     <section>
       <div className="container mx-auto px-24 mt-60">
-        <div className="flex flex-row justify-between w-full">
-          {speakersList?.map((speaker, index) => {
-            //check the breakpoint type and display the respective image
-            const imageSrc = breakpoint
-              ? speaker.image[breakpoint]
-              : speaker.image.desktop;
-
-            console.log("breakpoint", breakpoint);
-            return (
-              <div
-                className="relative min-h-fit  rounded-md bg-accent w-96  items-center flex flex-col "
-                key={index}
-              >
-                <img
-                  src={imageSrc}
-                  alt={speaker.name + "Image"}
-                  className="-top-24 absolute object-contain h-72 w-72"
-                />
-                <div className="flex flex-col justify-center items-center mt-40 mb-8 text-center space-y-4">
-                  <h2 className="text-xl font-bold tracking-wider  ">
-                    {speaker?.name?.toUpperCase()}
-                  </h2>
-                  <span className="inline-flex items-center">
-                    <h4 className="tracking-wider text-secondary/50">SHOP</h4>
-                    <img
-                      src="/assets/shared/desktop/icon-arrow-right.svg"
-                      alt="Arrow SVG"
-                      className="w-3 h-3 object-contain"
-                    />
-                  </span>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        <SpeakersSection />
             {/* stero speakers */}
         <div className="relative bg-primary w-full h-[680px] mt-44 overflow-hidden rounded-md">
           <img
@@ -157,7 +94,7 @@ const Speakers = () => {
 
            {/* Earphones */}
 
-        <div className="mt-14 w-full flex flex-row gap-10">
+        <div className="mt-14 w-full flex flex-row gap-10 mb-40">
           <div className="rounded-md h-[380px] w-1/2">
             <img
               src={imageEarPhonesSrc}

@@ -1,7 +1,10 @@
 "use client";
 
+import BearSection from "@/components/BearSection";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ProductCard, { ProductCardProps } from "@/components/ProductCard.tsx";
+import SpeakersSection from "@/components/SpeakersSection";
 import { useBreakpoint } from "@/hooks/use-breakpoints";
 import data from "@/lib/data.json";
 import { getLayout } from "@/lib/variables";
@@ -49,7 +52,15 @@ export default function HeadPhones() {
           .map((product, index) => (
             <ProductCard {...product} key={index} />
           ))}
+          <div className="py-28">
+
+          <SpeakersSection />
+          </div>
+          <BearSection />
       </div>
+          <Footer/>
+
+
     </>
   );
 }

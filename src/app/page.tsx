@@ -12,7 +12,7 @@ export default function Home() {
       {/* hero  section */}
       <Hero></Hero>
       {/* speakers  section */}
-      <Speakers></Speakers>
+      <Speakers />
       <BearSection />
 
       <Footer />
