@@ -21,7 +21,8 @@ const Navbar = () => {
   
   return (
     <>
-     <nav className="fixed top-0 left-0 right-0 py-8 w-full z-10  border-b border-[#979797] bg-[#191919] ">
+    {/* <div className="border-b border-[#979797] pt-24 px-24 bg-[#191919]"></div> */}
+     <nav className="fixed top-0 left-0 right-0 py-8 w-full z-10   bg-[#191919] ">
       <div className="max-w-[1350px] mx-auto flex justify-between items-center ">
         <div className="inline-flex items-center gap-5.5">
           <div className="md:hidden">
@@ -32,7 +33,7 @@ const Navbar = () => {
               />
             </button>
           </div>
-          <div className="text-white text-2xl font-extrabold ">audiophile</div>
+          <Link className="text-white text-2xl font-extrabold " href={"/"}>audiophile</Link>
         </div>
         <div className="hidden md:flex space-x-8">
           {navItems?.map((navItem, index) => (

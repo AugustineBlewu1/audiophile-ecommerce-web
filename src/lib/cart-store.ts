@@ -85,8 +85,10 @@ export const CartState = create<CartStore>()(
         }
       },
       totalPrice: () =>
-    get().products.reduce((total, product) => total + product.price * product.quantity, 0)
+    get().products.reduce((total, product) => total + product.price * product.quantity, 0),
+
     }),
+  
     {
       name: "cart-store",
       storage: createJSONStorage(() => localStorage),

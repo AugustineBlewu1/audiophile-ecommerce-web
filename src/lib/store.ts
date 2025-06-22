@@ -1,5 +1,5 @@
 import { useStore } from "zustand";
-import { CartDialogState } from "./cart-dialog";
+import { CartDialogState, SuccessDialogStore } from "./cart-dialog";
 import { CartState } from "./cart-store";
 
 
@@ -8,6 +8,17 @@ export const useCartDialog = () => {
   const showDialog = useStore(CartDialogState, (state) => state.openModal);
   const closeDialog = useStore(CartDialogState, (state) => state.closeModal);
   const dialogOpen = useStore(CartDialogState, (state) => state.isOpen);
+
+  return {
+    showDialog,
+    closeDialog,
+    dialogOpen,
+  };
+};
+export const useSuccessDialog = () => {
+  const showDialog = useStore(SuccessDialogStore, (state) => state.openModal);
+  const closeDialog = useStore(SuccessDialogStore, (state) => state.closeModal);
+  const dialogOpen = useStore(SuccessDialogStore, (state) => state.isOpen);
 
   return {
     showDialog,

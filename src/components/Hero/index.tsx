@@ -3,6 +3,8 @@ import { Button } from '../ui/button'
 
 const Hero = () => {
   return (
+    <>
+
     <div className="relative h-screen bg-[#191919] w-full overflow-hidden ">
 
         <img
@@ -26,6 +28,7 @@ const Hero = () => {
           </Button>
         </div>
       </div>
+    </>
   )
 }
 
