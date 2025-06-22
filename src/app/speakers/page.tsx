@@ -23,12 +23,12 @@ export default function Speakers() {
 
   const speakersProduct: ProductCardProps[] = getSpeakers?.map(
     (headphone) => {
-      const headPhoneSrc = breakPoint
+      const speakersSrc = breakPoint
         ? headphone?.categoryImage[breakPoint]
         : headphone?.categoryImage.desktop;
 
       return {
-        image: headPhoneSrc,
+        image: speakersSrc,
         productContent: {
           buttonAction: () => {},
           buttonText: "SEE PRODUCT",
