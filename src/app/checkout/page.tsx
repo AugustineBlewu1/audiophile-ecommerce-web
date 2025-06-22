@@ -206,8 +206,8 @@ export default function Checkout() {
           <div className="bg-white w-1/3 rounded-lg py-7 px-8">
             <h4 className="font-bold text-lg">SUMMARY</h4>
             <div className="space-y-6 pt-6">
-              {products?.map((product) => (
-                <div className="flex flex-row items-center justify-between  ">
+              {products?.map((product, index) => (
+                <div className="flex flex-row items-center justify-between  " key={index}>
                   <div className="flex flex-row items-center justify-between gap-5">
                     <img
                       src={product?.image}

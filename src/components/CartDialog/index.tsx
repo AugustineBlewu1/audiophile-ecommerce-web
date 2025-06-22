@@ -41,8 +41,8 @@ export function CartDialog() {
             Remove All
           </h5>
         </DialogHeader>
-        {products?.map((product) => (
-          <div className="flex flex-row items-center justify-between ">
+        {products?.map((product, index) => (
+          <div className="flex flex-row items-center justify-between "key={index}>
             <img src={product?.image} alt="" className="w-20 h-20 rounded-md" />
             <div className="text-start">
               <h4 className="font-bold text-sm break-words whitespace-normal  w-32">{product?.name}</h4>
