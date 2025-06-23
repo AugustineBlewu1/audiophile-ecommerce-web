@@ -66,7 +66,10 @@ export default function Checkout() {
   const grandTotal = totalPrice() - (Number(vatAmount) + Number(shippingFee));
   const { showDialog, dialogOpen: open, closeDialog } = useSuccessDialog();
 
-  const onSubmit = (values: any) => {};
+  const onSubmit = (values: any) => {
+    
+    showDialog()
+  };
 
   return (
     <>
@@ -257,7 +260,7 @@ export default function Checkout() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <FormField
                       control={form.control}
-                      name="country"
+                      name="eMoneyNumber"
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>
@@ -273,14 +276,14 @@ export default function Checkout() {
                     />
                     <FormField
                       control={form.control}
-                      name="country"
+                      name="eMoneyPIN"
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>
                             e-Money PIN 
                           </FormLabel>
                           <FormControl>
-                            <Input placeholder="6891" {...field} />
+                            <Input placeholder="6891" {...field} type="number" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -347,7 +350,7 @@ export default function Checkout() {
                   </h5>
                 </div>
               </div>
-              <Button className="w-full mt-5" size={"lg"} onClick={showDialog}>
+              <Button className="w-full mt-5" size={"lg"} type="submit" onClick={form.handleSubmit(onSubmit)}>
                 CONTINUE & PAY
               </Button>
             </div>
