@@ -85,7 +85,7 @@ export default function SingleSpeakerPage() {
   return (
     <div>
       <Navbar />
-      <div className="mt-24 py-20 container mx-auto px-24">
+      <div className="mt-24 py-20 container mx-auto lg:px-24 px-4">
         <h4
           onClick={router.back}
           className="text-secondary/50 text-lg hover:cursor-pointer hover:text-secondary/30"
@@ -140,7 +140,7 @@ export default function SingleSpeakerPage() {
             };
           })}
         />
-        <div className="py-52">
+        <div className="lg:py-52 py-32">
           <SpeakersSection />
         </div>
 

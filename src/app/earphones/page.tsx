@@ -47,7 +47,7 @@ export default function Earphones() {
   return (
     <>
       <Header title="Earphones" />;
-      <div className="mt-40 container mx-auto px-24 space-y-28">
+      <div className="lg:mt-40 mt-20 container mx-auto lg:px-24 px-4 md:px-8 lg:space-y-28 space-y-16">
         {earPhonesProducts
           ?.slice()
           .reverse()

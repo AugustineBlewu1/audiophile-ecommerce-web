@@ -140,7 +140,7 @@ export default function SingleHeadPhonePage() {
             };
           })}
         />
-        <div className="py-52">
+        <div className="lg:py-52 py-32">
 
         <SpeakersSection />
         </div>

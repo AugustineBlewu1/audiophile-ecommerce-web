@@ -50,7 +50,7 @@ export default function Speaker() {
   return (
     <>
       <Header title="Speakers" />;
-      <div className="mt-40 container mx-auto px-24 space-y-28">
+      <div className="lg:mt-40 mt-20 container mx-auto px-4 md:px-8 lg:px-24 space-y-16 lg:space-y-28">
         {speakersProduct
           ?.slice()
           .reverse()
