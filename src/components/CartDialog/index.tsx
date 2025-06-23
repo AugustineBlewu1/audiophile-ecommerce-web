@@ -11,7 +11,7 @@ import { useCartDialog, useCartStore } from "@/lib/store";
 import { Button } from "../ui/button";
 import CounterButton from "../CounterButton";
 import { useRouter } from "next/navigation";
-
+import Image from "next/image";
 export function CartDialog() {
   const { showDialog, dialogOpen: open, closeDialog } = useCartDialog();
   const {
@@ -23,10 +23,10 @@ export function CartDialog() {
     updateProduct,
     removeAProduct,
     singleProductTotal,
-    totalPrice
+    totalPrice,
   } = useCartStore();
 
-  const router = useRouter()
+  const router = useRouter();
 
   const handleOpenChange = (isOpen: boolean) => {
     if (isOpen) {
@@ -39,16 +39,27 @@ export function CartDialog() {
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent className="md:top-20  lg:top-32 md:left-auto lg:right-30  md:right-26  md:translate-y-0 md:translate-x-0 [&>button:last-child]:hidden w-[450px]">
         <DialogHeader className="flex flex-row justify-between">
-          <h3 className="font-extrabold">CART ({products?.length })</h3>
-          <h5 className="text-sm hover:underline" onClick={clearCart}>
+          <h3 className="font-extrabold">CART ({products?.length})</h3>
+          {products?.length > 0 && <h5 className="text-sm hover:underline" onClick={clearCart}>
             Remove All
-          </h5>
+          </h5>}
         </DialogHeader>
+        {products?.length === 0 && (
+          <div className="flex justify-center flex-col items-center">
+            <Image src={"/assets/checkout/cart-empty.png" } alt="Empty Cart Icon" width={100} height={100}/>
+            <h3 className="font-bold">No Item in Cart</h3>
+          </div>
+        )}
         {products?.map((product, index) => (
-          <div className="flex flex-row items-center justify-between "key={index}>
+          <div
+            className="flex flex-row items-center justify-between "
+            key={index}
+          >
             <img src={product?.image} alt="" className="w-20 h-20 rounded-md" />
             <div className="text-start">
-              <h4 className="font-bold text-sm break-words whitespace-normal  w-32">{product?.name}</h4>
+              <h4 className="font-bold text-sm break-words whitespace-normal  w-32">
+                {product?.name}
+              </h4>
               <h5 className="font-medium text-secondary/50">
                 $ {product?.price}
               </h5>
@@ -72,18 +83,23 @@ export function CartDialog() {
             />
           </div>
         ))}
-        <div className="flex flex-row justify-between">
-            <h4 className="text-secondary/50  font-medium">TOTAL</h4>
-            <h5 className="font-extrabold text-xl">$ {totalPrice()?.toLocaleString()}</h5>
-          </div>
+        { products?.length > 0 && <div className="flex flex-row justify-between">
+          <h4 className="text-secondary/50  font-medium">TOTAL</h4>
+          <h5 className="font-extrabold text-xl">
+            $ {totalPrice()?.toLocaleString()}
+          </h5>
+        </div>}
         <DialogFooter className="w-full">
-          
-          <Button className="w-full" size={"lg"} onClick={()=> {
-            router?.push('/checkout');
-            closeDialog()
-          }}>
+          { products?.length > 0 && <Button
+            className="w-full"
+            size={"lg"}
+            onClick={() => {
+              router?.push("/checkout");
+              closeDialog();
+            }}
+          >
             CHECK OUT
-          </Button>
+          </Button>}
         </DialogFooter>
       </DialogContent>
     </Dialog>
