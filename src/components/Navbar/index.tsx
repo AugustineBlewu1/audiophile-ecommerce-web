@@ -31,10 +31,10 @@ const Navbar = () => {
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 py-8 w-full z-20 bg-[#191919]">
-        <div className="md:max-w-[800px] 2xl:max-w-[1350px] lg:max-w-[1200px] lg:mx-auto flex justify-between items-center w-full px-4 md:px-0">
-          <div className="inline-flex items-center gap-5.5">
+        <div className="md:max-w-[800px] 2xl:max-w-[1350px] lg:max-w-[1200px] lg:mx-auto flex justify-between items-center w-full px-4 md:px-8">
+          <div className="inline-flex items-center gap-x-5.5">
             {/*  mobile humburger*/}
-            <div className="md:hidden">
+            <div className="lg:hidden">
               <button
                 className="text-gray-300 hover:text-white focus:outline-none"
                 onClick={handleMobileMenuToggle}
@@ -51,7 +51,7 @@ const Navbar = () => {
             </Link>
           </div>
           {/* Desktop nav */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden lg:flex space-x-8">
             {navItems?.map((navItem, index) => (
               <Link
                 href={navItem.link}

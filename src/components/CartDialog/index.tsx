@@ -37,7 +37,7 @@ export function CartDialog() {
   };
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogContent className="top-32 left-auto right-30 translate-y-0 translate-x-0 [&>button:last-child]:hidden w-[450px]">
+      <DialogContent className="md:top-20  lg:top-32 md:left-auto lg:right-30  md:right-26  md:translate-y-0 md:translate-x-0 [&>button:last-child]:hidden w-[450px]">
         <DialogHeader className="flex flex-row justify-between">
           <h3 className="font-extrabold">CART ({products?.length })</h3>
           <h5 className="text-sm hover:underline" onClick={clearCart}>
