@@ -1,16 +1,13 @@
 "use client";
 
 import { useBreakpoint } from "@/hooks/use-breakpoints";
-import { SpeakersList } from "@/lib/interface";
 import React from "react";
 import CardContent from "../CardContent";
-import { navItems } from "@/lib/variables";
-import Link from "next/link";
 import SpeakersSection from "../SpeakersSection";
+import Image from "next/image";
+import clsx from "clsx";
 
 const Speakers = () => {
- 
-
   const breakpoint = useBreakpoint();
 
   const speaker = {
@@ -29,33 +26,40 @@ const Speakers = () => {
     desktop: "./assets/home/desktop/image-earphones-yx1.jpg",
   };
 
- 
-
-  const imageSpeakerSrc = breakpoint ? speaker[breakpoint] : speaker.desktop;
+  const imageSpeakerSrc = breakpoint
+    ? speaker[breakpoint]?.slice(1)
+    : speaker.desktop?.slice(1);
   const imageSpeakerOnTableSrc = breakpoint
-    ? speakerOnTable[breakpoint]
-    : speakerOnTable.desktop;
+    ? speakerOnTable[breakpoint]?.slice(1)
+    : speakerOnTable.desktop?.slice(1);
   const imageEarPhonesSrc = breakpoint
-    ? earPhones[breakpoint]
-    : earPhones.desktop;
+    ? earPhones[breakpoint]?.slice(1)
+    : earPhones.desktop?.slice(1);
 
   return (
     <section>
-      <div className="container mx-auto px-24 mt-60">
+      <div className="container mx-auto px-4 lg:px-24 mt-32 lg:mt-60">
         <SpeakersSection />
-            {/* stero speakers */}
-        <div className="relative bg-primary w-full h-[680px] mt-44 overflow-hidden rounded-md">
-          <img
+        {/* stero speakers */}
+        <div className="relative bg-primary w-full h-[680px] mt-44 overflow-hidden rounded-md md:inset-0 justify-center   flex lg:block">
+          <Image
             src="/assets/home/desktop/pattern-circles.svg"
             alt="Pattern Circles"
-            className=" absolute -left-40 -top-10  w-[80%] object-contain  "
+            width={1090}
+            height={300}
+            className="absolute lg:-left-40 lg:-top-10 object-cover md:-top-35 -top-5"
           />
-          <img
+        
+
+          <Image
             src={imageSpeakerSrc}
             alt={"Speaker Image"}
-            className="absolute w-[450px] -bottom-3 left-36 "
+            width={breakpoint === 'mobile' ? 200 : breakpoint === 'tablet' ?  200 : 400 }
+            height={breakpoint === 'mobile' ? 300 : breakpoint === 'tablet' ?  300 : 500}
+            className={clsx("absolute lg:top-auto -bottom-3  lg:left-36  md:top-20 top-20")}
           />
-          <div className="relative  h-full flex justify-end items-center pr-40">
+      
+          <div className="relative  h-full flex justify-end items-center  lg:pr-40 md:pt-64 pt-64 lg:pt-0">
             <CardContent
               title={
                 <>
@@ -71,8 +75,8 @@ const Speakers = () => {
             />
           </div>
         </div>
-            
-            {/* Speaker on Table */}
+
+        {/* Speaker on Table */}
         <div className="relative bg-muted w-full h-[380px] mt-14 overflow-hidden rounded-md">
           <img
             src={imageSpeakerOnTableSrc}
@@ -92,7 +96,7 @@ const Speakers = () => {
           </div>
         </div>
 
-           {/* Earphones */}
+        {/* Earphones */}
 
         <div className="mt-14 w-full flex flex-row gap-10 mb-40">
           <div className="rounded-md h-[380px] w-1/2">
@@ -116,11 +120,7 @@ const Speakers = () => {
             </div>
           </div>
         </div>
-
-       
       </div>
-
-   
     </section>
   );
 };

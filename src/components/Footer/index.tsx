@@ -5,8 +5,8 @@ import React from 'react'
 const Footer = () => {
   return (
        <div className="bg-secondary w-full mt-52 border-b-4">
-        <div className="w-28 h-2 bg-primary ml-32 items-start"></div>
-        <div className="max-w-[1350px] mx-auto py-24">
+        <div className="w-28 h-2 bg-primary lg:ml-32  2xl:ml-92"></div>
+        <div className="lg:max-w-[1200px] 2xl:max-w-[1350px] mx-auto py-24">
           <div className="flex flex-row justify-between">
             <h2 className="text-white text-3xl font-extrabold ">audiophile</h2>
             <div className="flex space-x-8">

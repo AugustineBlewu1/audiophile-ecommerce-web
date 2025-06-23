@@ -1,8 +1,5 @@
 export interface SpeakersList {
 name: string;
-image: {
-    mobile: string
-    tablet: string;
-    desktop: string
-}
+image: string;
+link: string
 }
