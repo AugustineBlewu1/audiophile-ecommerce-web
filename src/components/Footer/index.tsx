@@ -4,9 +4,10 @@ import React from 'react'
 
 const Footer = () => {
   return (
-       <div className="bg-secondary w-full mt-10 lg:mt-52 border-b-4">
-        <div className="w-28 h-2 bg-primary md:ml-12 lg:ml-32  2xl:ml-92"></div>
-        <div className="lg:max-w-[1200px] 2xl:max-w-[1350px] mx-auto py-24">
+       <div className="bg-secondary w-full mt-10 lg:mt-52 border-b-4  ">
+        <div className="lg:max-w-[1200px] 2xl:max-w-[1350px] mx-auto relative before:content-[''] before:absolute before:top-0  lg:before:left-0 md:before:left-12 before:left-[35%] before:w-[120px] before:h-[5px] before:bg-primary">
+          <div className='py-24 '>
+
           <div className="flex lg:flex-row flex-col lg:gap-0 gap-16  lg:justify-between px-12 lg:px-0">
             <h2 className="text-white text-3xl font-extrabold text-center md:text-start ">audiophile</h2>
             <div className="flex md:flex-row flex-col space-y-4 text-center md:text-start  md:space-x-8">
@@ -42,6 +43,7 @@ const Footer = () => {
                 ))
               }
             </div>
+          </div>
           </div>
         </div>
       </div>

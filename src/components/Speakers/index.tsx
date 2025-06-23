@@ -45,7 +45,7 @@ const Speakers = () => {
 
   return (
     <section>
-      <div className="mx-auto px-4 lg:px-24 mt-32 lg:mt-60">
+      <div className="container mx-auto px-4 lg:px-24 mt-32 lg:mt-60">
         <SpeakersSection />
         {/* stero speakers */}
         <div className="relative bg-primary w-full h-[680px] mt-44 overflow-hidden rounded-md md:inset-0 justify-center   flex lg:block">
