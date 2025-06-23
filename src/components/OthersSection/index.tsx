@@ -18,7 +18,7 @@ const OthersSection: React.FC<OthersSectionProps> = ({ others }) => {
       <h3 className="text-center font-extrabold flex justify-center text-3xl">
         YOU MAY ALSO LIKE
       </h3>
-      <div className="flex flex-row gap-x-8 py-10">
+      <div className="flex md:flex-row flex-col gap-y-7 lg:gap-y-0 md:gap-x-4 lg:gap-x-8 py-10">
         {others?.map((other, index) => {
           //gets the last item after a split by - fro route head
     

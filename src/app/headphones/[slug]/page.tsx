@@ -9,7 +9,6 @@ import ProductDetailsCard from "@/components/ProductDetailsCard";
 import { CardContentDetailsProps } from "@/components/CardContentDetails";
 import { splitAfterWord } from "@/lib/variables";
 import Features from "@/components/Features";
-import { Button } from "@/components/ui/button";
 import OthersSection from "@/components/OthersSection";
 import SpeakersSection from "@/components/SpeakersSection";
 import BearSection from "@/components/BearSection";
@@ -24,22 +23,20 @@ export default function SingleHeadPhonePage() {
     const [productQuantity, setProductQuantity] = useState(1);
       const {
         addProduct,
-        clearCart,
-        clearProductItem,
         products,
-        totalProducts,
         updateProduct,
         singleProductTotal,
-        removeAProduct,
+ 
       } = useCartStore();
   const getHeadPhoneData = data?.filter(
     (products) => products.slug === slug
   )[0];
   const headPhoneSrc = breakPoint
-    ? getHeadPhoneData?.categoryImage[breakPoint]
-    : getHeadPhoneData?.categoryImage.desktop;
+    ? getHeadPhoneData.image[breakPoint]?.slice(1)
+    : getHeadPhoneData?.image.desktop?.slice(1);
 
   console.log("headPhoneSrc", headPhoneSrc);
+  console.log("breakpoint", breakPoint);
   const productContent: CardContentDetailsProps = {
     buttonAction: () => {
        if(singleProductTotal(getHeadPhoneData?.slug) > 1){
@@ -92,7 +89,7 @@ export default function SingleHeadPhonePage() {
   return (
     <div>
       <Navbar />
-      <div className="mt-24 py-20 container mx-auto px-24">
+      <div className="mt-24 py-20 container mx-auto lg:px-24 px-4">
         <h4
           onClick={router.back}
           className="text-secondary/50 text-lg hover:cursor-pointer hover:text-secondary/30"
@@ -102,11 +99,7 @@ export default function SingleHeadPhonePage() {
 
         <div className="py-14">
           <ProductDetailsCard
-            image={
-              headPhoneSrc?.startsWith("./")
-                ? headPhoneSrc?.slice(1)
-                : headPhoneSrc
-            }
+            image={ headPhoneSrc }
             productContent={productContent}
           />
         </div>

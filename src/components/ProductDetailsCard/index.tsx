@@ -16,11 +16,11 @@ const ProductCard : React.FC<ProductCardDetailsProps> = (
     { productContent, image}
 ) => {
   return (
-      <div className={clsx("w-full flex items-center gap-10", productContent.layout === 'right' ? 'flex-row' : 'flex-row-reverse')}>
-        <div className="w-1/2">
+      <div className={clsx("w-full flex items-center gap-10", productContent.layout === 'right' ? 'lg:flex-row flex-col' : 'md:flex-row-reverse flex-col-reverse')}>
+        <div className="lg:w-1/2 w-full flex justify-center">
           <CardContentDetails  {...productContent} />
         </div>
-        <div className="w-1/2 rounded-md">
+        <div className="w-full lg:w-1/2 rounded-md">
           <img
             src={image}
             alt="Product Image"

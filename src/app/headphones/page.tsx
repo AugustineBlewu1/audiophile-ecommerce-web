@@ -41,7 +41,7 @@ export default function HeadPhones() {
           type: headphone?.new ? "NEW PRODUCT" : "",
           description: headphone?.description,
           textColor: "text-secondary",
-          layout: getHeadphonesLayout(headphone?.slug),
+          layout: (breakPoint === 'mobile' || breakPoint === 'tablet') ? 'left' : getHeadphonesLayout(headphone?.slug),
         },
       };
     }
@@ -50,7 +50,7 @@ export default function HeadPhones() {
   return (
     <>
       <Header title="Headphones" />;
-      <div className="mt-40 container mx-auto px-24 space-y-28">
+      <div className="lg:mt-40 md:mt-32 mt-20 container mx-auto lg:px-24 px-8 space-y-28">
         {headPhonesProducts
           ?.slice()
           .reverse()

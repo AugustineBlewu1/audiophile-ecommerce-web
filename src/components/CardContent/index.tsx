@@ -36,7 +36,7 @@ export type CardContentProps = {
  */
 const CardContent: React.FC<CardContentProps> = (data) => {
   return (
-    <div className={clsx(" flex flex-col space-y-3 md:space-y-5 lg:space-y-8 w-fit items-center lg:items-start ", data?.layout === 'left' ? 'ml-24' :'')}>
+    <div className={clsx(" flex flex-col space-y-3 md:space-y-5 lg:space-y-8 w-fit items-center lg:items-start ", data?.layout === 'left' ? 'lg:ml-24 md:ml-0' :'')}>
       {data.type && (
         <h3 className="text-lg text-primary tracking-widest ">{data.type}</h3>
       )}

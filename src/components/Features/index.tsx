@@ -20,17 +20,17 @@ const Features: React.FC<FeatureProps> = ({
 }) => {
   return (
     <>
-      <div className="flex flex-row justify-between">
+      <div className="flex lg:flex-row flex-col justify-between">
         <div className="space-y-5">
           <h2 className="text-2xl font-bold ">FEATURES</h2>
-          <p className="text-secondary/50 tracking-wide w-[740px]">
+          <p className="text-secondary/50 tracking-wide lg:w-[740px] w-full">
             {paragraphs[0]}
           </p>
-          <p className="text-secondary/50 tracking-wide w-[740px]">
+          <p className="text-secondary/50 tracking-wide lg:w-[740px] w-full">
             {paragraphs[1]}
           </p>
         </div>
-        <div className="space-y-5 pr-60">
+        <div className="space-y-5  pt-10 lg:pt-0 md:flex md:flex-row lg:flex-col md:justify-between lg:justify-start">
           <h2 className="text-2xl font-bold ">IN THE BOX</h2>
           <ol className="">
             {boxFeatures?.map((includedItem, index) => (
@@ -45,8 +45,8 @@ const Features: React.FC<FeatureProps> = ({
         </div>
       </div>
 
-      <div className="h-[680px] w-full flex flex-row gap-6 justify-between my-24">
-        <div className="flex flex-col w-[40%] justify-between">
+      <div className="lg:h-[680px]  w-full flex md:flex-row flex-col gap-6 lg:justify-between lg:my-24 my-10 md:my-16">
+        <div className="flex flex-col lg:w-[35%] md:w-[50%]  justify-between gap-10">
           <img
             src={imageFirst}
             alt="Image Gallery"
@@ -59,7 +59,7 @@ const Features: React.FC<FeatureProps> = ({
           />
         </div>
 
-        <div className="w-[60%]">
+        <div className="lg:w-[60%] md:w-[50%]">
           <img
             src={imageThird}
             alt="Image Gallery"
