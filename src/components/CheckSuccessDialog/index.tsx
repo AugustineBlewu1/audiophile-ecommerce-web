@@ -44,8 +44,8 @@ export function CheckOutSuccessDialog() {
         </p>
 
         <div className="rounded-lg w-full">
-          <div className="flex flex-row rounded-2xl">
-            <div className="flex flex-col bg-muted w-fit rounded-l-2xl px-8 py-7 ">
+          <div className="flex lg:flex-row rounded-2xl flex-col">
+            <div className="flex flex-col bg-muted md:w-fit rounded-t-2xl  md:rounded-l-2xl px-8 py-7 w-full">
               <div className="flex flex-row">
                 <img
                   src={products[0]?.image}
@@ -72,7 +72,7 @@ export function CheckOutSuccessDialog() {
                 </p>
               )}
             </div>
-            <div className="bg-secondary text-start rounded-r-2xl  flex items-start space-y-5 justify-center flex-col px-10">
+            <div className="bg-secondary text-start md:rounded-r-2xl rounded-b-2xl flex items-start space-y-5 justify-center flex-col py-4 lg:py-0 px-10">
               <h4 className="text-muted/40 font-medium">GRAND TOTAL</h4>
               <h5 className="font-extrabold text-xl text-white">
                 $ {totalPrice()?.toLocaleString()}
