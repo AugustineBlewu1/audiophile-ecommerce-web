@@ -6,9 +6,11 @@ import CardContent from "../CardContent";
 import SpeakersSection from "../SpeakersSection";
 import Image from "next/image";
 import clsx from "clsx";
+import { useRouter } from "next/navigation";
 
 const Speakers = () => {
   const breakpoint = useBreakpoint();
+  const router = useRouter();
 
   const speaker = {
     mobile: "./assets/home/mobile/image-speaker-zx9.png",
@@ -49,16 +51,29 @@ const Speakers = () => {
             height={300}
             className="absolute lg:-left-40 lg:-top-10 object-cover md:-top-35 -top-5"
           />
-        
 
           <Image
             src={imageSpeakerSrc}
             alt={"Speaker Image"}
-            width={breakpoint === 'mobile' ? 200 : breakpoint === 'tablet' ?  200 : 400 }
-            height={breakpoint === 'mobile' ? 300 : breakpoint === 'tablet' ?  300 : 500}
-            className={clsx("absolute lg:top-auto -bottom-3  lg:left-36  md:top-20 top-20")}
+            width={
+              breakpoint === "mobile"
+                ? 200
+                : breakpoint === "tablet"
+                ? 200
+                : 400
+            }
+            height={
+              breakpoint === "mobile"
+                ? 300
+                : breakpoint === "tablet"
+                ? 300
+                : 500
+            }
+            className={clsx(
+              "absolute lg:top-auto -bottom-3  lg:left-36  md:top-20 top-20"
+            )}
           />
-      
+
           <div className="relative  h-full flex justify-end items-center  lg:pr-40 md:pt-64 pt-64 lg:pt-0">
             <CardContent
               title={
@@ -70,7 +85,9 @@ const Speakers = () => {
                 "Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound."
               }
               buttonText={"SEE PRODUCT"}
-              buttonAction={() => {}}
+              buttonAction={() => {
+                router.push("/speaker/zx9-speaker");
+              }}
               variant={"secondary"}
             />
           </div>
@@ -89,7 +106,9 @@ const Speakers = () => {
               title={<>ZX9 SPEAKER</>}
               description={""}
               buttonText={"SEE PRODUCT"}
-              buttonAction={() => {}}
+              buttonAction={() => {
+                router.push(" /speaker/zx7-speaker");
+              }}
               variant={"outline"}
               textColor="text-secondary"
               titleTextSize={"lg"}
@@ -114,7 +133,9 @@ const Speakers = () => {
                 title={<>YX1 EARPHONES</>}
                 description={""}
                 buttonText={"SEE PRODUCT"}
-                buttonAction={() => {}}
+                buttonAction={() => {
+                  router.push('/earphones/yx1-earphones')
+                }}
                 variant={"outline"}
                 textColor="text-secondary"
                 titleTextSize={"sm"}

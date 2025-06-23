@@ -41,7 +41,7 @@ const CardContent: React.FC<CardContentProps> = (data) => {
         <h3 className="text-lg text-primary tracking-widest ">{data.type}</h3>
       )}
       <h1 className={cn(textvariants({ size: data.titleTextSize }), data.textColor ? data.textColor : 'text-white')}>{data.title}</h1>
-      {data.description && <p className={clsx("w-80 lg:w-96 tracking-wide text-center lg:items-start", data.textColor ? data.textColor + '/50' : 'text-white')}>{data?.description}</p>}
+      {data.description && <p className={clsx("w-80 lg:w-96 tracking-wide text-center lg:text-left ", data.textColor ? data.textColor + '/50' : 'text-white ')}>{data?.description}</p>}
 
       <Button
         className="w-fit tracking-wide"

@@ -25,12 +25,11 @@ const BearSection = () => {
         </p>
       </div>
 
-      <div className="relative lg:w-1/2 w-full md:h-[320px]  rounded-md">
-        <Image
+      <div className="lg:w-1/2 w-full ">
+        <img
           src={`/assets/shared/${breakpoint}/image-best-gear.jpg`}
           alt="Best Gear"
-          className="absolute object-cover  rounded-md"
-          fill
+          className=" object-cover  rounded-md"
         />
       </div>
     </div>

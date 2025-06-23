@@ -4,9 +4,10 @@ import React from 'react'
 import { Button } from '../ui/button'
 import { useBreakpoint } from '@/hooks/use-breakpoints'
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const Hero = () => {
-
+  const router = useRouter()
   const breakPoint = useBreakpoint();
 
   return (
@@ -29,7 +30,9 @@ const Hero = () => {
             made for the passionate music enthusiast.
           </p>
 
-          <Button className="w-fit tracking-wide" size={"lg"}>
+          <Button className="w-fit tracking-wide" size={"lg"} onClick={() => {
+            router.push('/headphones/xx99-mark-two-headphones')
+          }}>
             SEE PRODUCT
           </Button>
         </div>
