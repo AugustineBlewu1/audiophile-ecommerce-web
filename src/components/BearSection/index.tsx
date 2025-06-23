@@ -1,15 +1,21 @@
+"use client";
+
+import { useBreakpoint } from "@/hooks/use-breakpoints";
 import React from "react";
+import Image from "next/image";
 
 const BearSection = () => {
+    const breakpoint = useBreakpoint();
+  
   return (
-    <div className="container mx-auto px-24">
-    <div className=" w-full flex flex-row items-center gap-10">
-      <div className="space-y-8 w-1/2">
-        <h1 className="text-4xl font-extrabold uppercase">
-          Bringing you the <br /> <span className="text-primary">best </span>{" "}
+    <div className="container mx-auto lg:px-24 px-4 mt-32">
+    <div className=" w-full flex lg:flex-row flex-col-reverse  items-center gap-10">
+      <div className="space-y-8 w-full text-center lg:text-start  lg:w-1/2">
+        <h1 className="lg:text-4xl text-3xl font-extrabold uppercase text-center lg:text-start">
+          Bringing you the <br className="md:hidden block" /> <span className="text-primary">best <br className="lg:hidden hidden"/> </span>{" "}
           audio gear
         </h1>
-        <p className="w-96 tracking-wide text-left text-sm text-secondary/50">
+        <p className="lg:w-96 tracking-wide text-center lg:text-left text-sm text-secondary/50">
           Located at the heart of New York City, Audiophile is the premier store
           for high end headphones, earphones, speakers, and audio accessories.
           We have a large showroom and luxury demonstration rooms available for
@@ -19,11 +25,12 @@ const BearSection = () => {
         </p>
       </div>
 
-      <div className="w-1/2 rounded-md">
-        <img
-          src="/assets/shared/mobile/image-best-gear.jpg"
+      <div className="relative lg:w-1/2 w-full md:h-[320px] h-[280px] rounded-md">
+        <Image
+          src={`/assets/shared/${breakpoint}/image-best-gear.jpg`}
           alt="Best Gear"
-          className="object-cover w-full rounded-md"
+          className="absolute object-cover  rounded-md"
+          fill
         />
       </div>
     </div>

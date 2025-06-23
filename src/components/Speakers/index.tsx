@@ -78,12 +78,13 @@ const Speakers = () => {
 
         {/* Speaker on Table */}
         <div className="relative bg-muted w-full h-[380px] mt-14 overflow-hidden rounded-md">
-          <img
+          <Image
             src={imageSpeakerOnTableSrc}
             alt={"Speaker Image"}
-            className=" absolute object-cover w-full"
+            className="absolute object-cover "
+            fill
           />
-          <div className="absolute h-full flex justify-start items-center pl-40">
+          <div className="absolute h-full flex justify-start items-center lg:pl-40 pl-8">
             <CardContent
               title={<>ZX9 SPEAKER</>}
               description={""}
@@ -91,23 +92,24 @@ const Speakers = () => {
               buttonAction={() => {}}
               variant={"outline"}
               textColor="text-secondary"
-              titleTextSize={"sm"}
+              titleTextSize={"lg"}
             />
           </div>
         </div>
 
         {/* Earphones */}
 
-        <div className="mt-14 w-full flex flex-row gap-10 mb-40">
-          <div className="rounded-md h-[380px] w-1/2">
-            <img
+        <div className="mt-14 w-full flex flex-col md:flex-row md:gap-10 lg:mb-40 gap-8">
+          <div className="relative rounded-md   h-[190px] lg:h-[380px] md:w-1/2 overflow-hidden">
+            <Image
               src={imageEarPhonesSrc}
               alt="Ear Phone Image"
-              className="object-cover w-full rounded-md"
+              className="absolute object-cover rounded-md"
+              fill
             />
           </div>
-          <div className="relative rounded-md h-[380px] w-1/2 bg-accent">
-            <div className="absolute h-full flex justify-start items-center pl-40 ">
+          <div className="relative rounded-md lg:h-[380px] h-[190px] md:w-1/2 bg-accent">
+            <div className="absolute  lg:h-full flex inset-0 justify-center items-center   ">
               <CardContent
                 title={<>YX1 EARPHONES</>}
                 description={""}
