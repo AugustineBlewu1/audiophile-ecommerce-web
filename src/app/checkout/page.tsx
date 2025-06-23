@@ -78,15 +78,15 @@ export default function Checkout() {
 
     <div className="bg-muted">
       <Navbar />
-      <div className="mt-24 py-14 container mx-auto px-24 ">
+      <div className="mt-24 py-14 container mx-auto lg:px-24 px-4 md:py-8 ">
         <h4
           onClick={router.back}
-          className="text-secondary/50 text-lg hover:cursor-pointer hover:text-secondary/30 mb-16"
+          className="text-secondary/50 text-lg hover:cursor-pointer hover:text-secondary/30 lg:mb-16 mb-7"
         >
           Go Back
         </h4>
-        <div className="flex flex-row gap-x-12">
-          <div className="py-16 bg-white rounded-lg px-16 w-2/3">
+        <div className="flex lg:flex-row flex-col gap-y-5 gap-x-12">
+          <div className="lg:py-16 py-5 bg-white rounded-lg px-4 lg:px-16 lg:w-2/3">
             <h4 className="font-extrabold text-3xl pb-8">CHECKOUT</h4>
             <Form {...form}>
               <form
@@ -203,7 +203,7 @@ export default function Checkout() {
               </form>
             </Form>
           </div>
-          <div className="bg-white w-1/3 rounded-lg py-7 px-8">
+          <div className="bg-white lg:w-1/3 rounded-lg py-7 px-8">
             <h4 className="font-bold text-lg">SUMMARY</h4>
             <div className="space-y-6 pt-6">
               {products?.map((product, index) => (

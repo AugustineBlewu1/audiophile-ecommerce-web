@@ -38,7 +38,7 @@ const Footer = () => {
             <div className="flex flex-row gap-5 md:justify-start justify-center items-center pt-10 "> 
               {
                 socialIcons?.map((icon, index) => (
-                  <img src={icon} alt="Social Icon" key={index} className="hover:text-primary  group transition-colors" />
+                  <img src={icon?.slice(1)} alt="Social Icon" key={index} className="hover:text-primary  group transition-colors" />
                 ))
               }
             </div>
