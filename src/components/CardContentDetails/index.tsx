@@ -10,7 +10,7 @@ const textvariants = cva("", {
   variants: {
     size: {
       sm: "lg:text-3xl font-bold font-bold md:text-2xl lg:text-start text-center text-xl",
-      lg: "lg:text-6xl font-extrabold font-extrabold  md:text-4xl lg:text-start text-center text-3xl",
+      lg: "lg:text-6xl font-extrabold font-extrabold  md:text-4xl lg:text-start text-center text-2xl",
     },
   },
   defaultVariants: {
@@ -39,12 +39,12 @@ export type CardContentDetailsProps = {
  */
 const CardContent: React.FC<CardContentDetailsProps> = (data) => {
   return (
-    <div className={clsx(" flex flex-col  space-y-3 w-fit items-start lg:items-start ", data?.layout === 'left' ? 'lg:ml-24 ml-0' :'')}>
+    <div className={clsx("flex flex-col space-y-3 w-fit items-start lg:items-start", data?.layout === 'left' ? 'lg:ml-24 ml-0' :'')}>
       {data.type && (
         <h3 className="text-lg text-primary tracking-widest ">{data.type}</h3>
       )}
       <h1 className={cn(textvariants({ size: data.titleTextSize }), data.textColor ? data.textColor : 'text-white')}>{data.title}</h1>
-      {data.description && <p className={clsx("w-96 tracking-wide", data.textColor ? data.textColor + '/50' : 'text-white')}>{data?.description}</p>}
+      {data.description && <p className={clsx("lg:w-96 w-80 tracking-wide", data.textColor ? data.textColor + '/50' : 'text-white')}>{data?.description}</p>}
 
       <h3 className="font-bold lg:py-12 py-6 text-start">$ {data?.price?.toLocaleString()}</h3>
       <div className="flex flex-row items-center gap-8">

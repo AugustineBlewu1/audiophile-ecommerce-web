@@ -28,19 +28,24 @@ const Speakers = () => {
     desktop: "./assets/home/desktop/image-earphones-yx1.jpg",
   };
 
+  //speaker image
   const imageSpeakerSrc = breakpoint
     ? speaker[breakpoint]?.slice(1)
     : speaker.desktop?.slice(1);
+    
+  //image on table
   const imageSpeakerOnTableSrc = breakpoint
     ? speakerOnTable[breakpoint]?.slice(1)
     : speakerOnTable.desktop?.slice(1);
+
+  //Earphones
   const imageEarPhonesSrc = breakpoint
     ? earPhones[breakpoint]?.slice(1)
     : earPhones.desktop?.slice(1);
 
   return (
     <section>
-      <div className="container mx-auto px-4 lg:px-24 mt-32 lg:mt-60">
+      <div className="mx-auto px-4 lg:px-24 mt-32 lg:mt-60">
         <SpeakersSection />
         {/* stero speakers */}
         <div className="relative bg-primary w-full h-[680px] mt-44 overflow-hidden rounded-md md:inset-0 justify-center   flex lg:block">
@@ -134,7 +139,7 @@ const Speakers = () => {
                 description={""}
                 buttonText={"SEE PRODUCT"}
                 buttonAction={() => {
-                  router.push('/earphones/yx1-earphones')
+                  router.push("/earphones/yx1-earphones");
                 }}
                 variant={"outline"}
                 textColor="text-secondary"

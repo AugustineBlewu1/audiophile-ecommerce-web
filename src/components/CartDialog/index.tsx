@@ -55,12 +55,12 @@ export function CartDialog() {
             className="flex flex-row items-center justify-between "
             key={index}
           >
-            <img src={product?.image} alt="" className="w-20 h-20 rounded-md" />
+            <img src={product?.image} alt="" className="md:w-20 md:h-20 w-10 h-10 rounded-md" />
             <div className="text-start">
-              <h4 className="font-bold text-sm break-words whitespace-normal  w-32">
+              <h4 className="font-bold md:text-sm text-[10px] break-words whitespace-normal w-20 lg:w-32">
                 {product?.name}
               </h4>
-              <h5 className="font-medium text-secondary/50">
+              <h5 className="font-medium text-secondary/50 text-sm md:text-lg">
                 $ {product?.price}
               </h5>
             </div>
@@ -85,7 +85,7 @@ export function CartDialog() {
         ))}
         { products?.length > 0 && <div className="flex flex-row justify-between">
           <h4 className="text-secondary/50  font-medium">TOTAL</h4>
-          <h5 className="font-extrabold text-xl">
+          <h5 className="font-extrabold lg:text-xl text-lg">
             $ {totalPrice()?.toLocaleString()}
           </h5>
         </div>}

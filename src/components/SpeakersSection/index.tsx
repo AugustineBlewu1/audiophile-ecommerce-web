@@ -16,15 +16,15 @@ const SpeakersSection = () => {
        
         return (
           <div
-            className="relative min-h-fit  rounded-md bg-accent w-96  items-center flex flex-col "
+            className="relative rounded-md bg-accent w-full  items-center flex flex-col "
             key={index}
           >
             <Image
               src={imageSrc}
               alt={speaker.name + "Image"}
               className="-top-24 absolute object-contain h-72 w-72"
-              width={288}
-              height={288}
+              width={280}
+              height={280}
             />
             <div className="flex flex-col justify-center items-center mt-36 md:mt-32 lg:mt-40 mb-8 text-center space-y-4">
               <h2 className="text-xl font-bold tracking-wider  ">
@@ -35,7 +35,7 @@ const SpeakersSection = () => {
                 <Image
                   src="/assets/shared/desktop/icon-arrow-right.svg"
                   alt="Arrow SVG"
-                  className=" object-contain"
+                  className="object-contain"
                   width={8}
                   height={8}
                 />
